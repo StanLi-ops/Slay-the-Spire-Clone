@@ -1,8 +1,9 @@
 extends CardState
 
-# 状态进入
+
+# 状态 进入时
 func enter():
-	# 修改 CardUI 各参数
+	# 修改 CardUI 参数
 	card_ui.color.color = Color(0.3, 0.3, 1); 
 	card_ui.state.text = "CLICKED";
 	card_ui.drop_point_detector.monitoring = true;

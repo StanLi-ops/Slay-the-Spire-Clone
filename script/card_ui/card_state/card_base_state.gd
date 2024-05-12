@@ -1,12 +1,13 @@
 extends CardState
 
-# 状态进入
+
+# 状态 进入时
 func enter():
 	# 确认 CardUI 加载完成
 	if not card_ui.is_node_ready():
 		await  card_ui.ready;
 	
-	# 发送 复原 请求信号 / 重置 CardUI 各参数
+	# 发送 复原状态 请求信号 / 重置 CardUI 参数
 	card_ui.reparent_requested.emit(card_ui);
 	card_ui.color.color = Color(0.0, 0.5, 0.5); 
 	card_ui.state.text = "BASE";
