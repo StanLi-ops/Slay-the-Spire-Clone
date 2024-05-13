@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Slay-the-spire-clone"
+config/name="Slay the Spire Clone"
 run/main_scene="res://scenes/battle.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Events="*res://global/events.gd"
 
 [display]
 
@@ -40,6 +44,7 @@ right_mouse={
 
 2d_physics/layer_1="card_target_selector"
 2d_physics/layer_2="card_drop_area"
+2d_physics/layer_3="enemy"
 
 [rendering]
 

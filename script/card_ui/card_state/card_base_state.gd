@@ -7,6 +7,10 @@ func enter():
 	if not card_ui.is_node_ready():
 		await  card_ui.ready;
 	
+	# 检查 tween 是否存在或运行. 是, 则关闭 tween
+	if card_ui.tween and card_ui.tween.is_running():
+		card_ui.tween.kill();
+	
 	# 发送 复原状态 请求信号 / 重置 CardUI 参数
 	card_ui.reparent_requested.emit(card_ui);
 	card_ui.color.color = Color(0.0, 0.5, 0.5); 

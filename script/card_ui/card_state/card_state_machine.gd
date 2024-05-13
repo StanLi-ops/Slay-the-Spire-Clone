@@ -9,7 +9,7 @@ var current_state: CardState;
 # 状态集
 var states := {};
 
-func init(card: CardUI):
+func init(card_ui: CardUI):
 	# 获取并便利所有子节点
 	# 判断子节点是否为 CardState
 	# 如果是，。。。。
@@ -17,7 +17,7 @@ func init(card: CardUI):
 		if child is CardState:
 			states[child.state] = child;
 			child.transition_requested.connect(on_transition_requested);
-			child.card_ui = card;
+			child.card_ui = card_ui;
 	
 	if initial_state:
 		initial_state.enter();

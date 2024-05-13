@@ -21,9 +21,15 @@ func enter():
 
 # 状态 输入时
 func on_input(event: InputEvent):
+	var single_targeted := card_ui.card.is_single_targeted();
 	var mouse_motion := event is InputEventMouseMotion;
 	var cancel := event.is_action_pressed("right_mouse");
 	var released := event.is_action_pressed("left_mouse") or event.is_action_released("left_mouse");
+	
+	# 判断是否符合瞄准状态. 是, 则转换状态至 AIMING
+	if single_targeted and mouse_motion and card_ui.targets.size() > 0:
+		transition_requested.emit(self, CardState.State.AIMING);
+		return;
 	
 	# 更新 CardUI 位置
 	if mouse_motion:
