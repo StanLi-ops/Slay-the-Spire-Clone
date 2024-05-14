@@ -47,9 +47,9 @@ func take_damage(damage: int):
 		queue_free();
 
 
-func _on_area_entered(area):
+func _on_area_entered(_area):
 	arrow.visible = true;
 
 
-func _on_area_exited(area):
+func _on_area_exited(_area):
 	arrow.visible = false; # Replace with function body.

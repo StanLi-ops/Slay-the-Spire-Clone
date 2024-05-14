@@ -5,8 +5,7 @@ const MOUSE_Y_SNAPBACK_THERSHOLD := 138;
 # 状态 进入时
 func enter():
 	# 修改 CardUI 参数
-	card_ui.color.color = Color.WEB_PURPLE; 
-	card_ui.state.text = "AIMING";
+	
 	card_ui.targets.clear();
 	
 	# 计算 Card 偏移量

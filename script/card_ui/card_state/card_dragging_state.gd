@@ -11,8 +11,7 @@ func enter():
 		card_ui.reparent(ui_layer);
 	
 	# 修改 CardUI 参数 
-	card_ui.color.color = Color(0.7, 0.0, 0.6); 
-	card_ui.state.text = "DRAGGING";
+	card_ui.panel.set("theme_override_styles/panel", card_ui.DRAGGING_STYLEBOX);
 	
 	# 添加一个定时器, 防止短时间内接受 InputEvent 过多.
 	minimum_drop_time_elapsed = false;

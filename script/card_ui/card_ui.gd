@@ -4,10 +4,15 @@ extends Control;
 # 复原 请求信号
 signal reparent_requested(which_card_ui: CardUI);
 
-@export var card: Card;
+const BASE_STYLEBOX := preload("res://tres/card_base_stylebox.tres");
+const DRAGGING_STYLEBOX := preload("res://tres/card_dragging_stylebox.tres");
+const HOVER_STYLEBOX := preload("res://tres/card_hover_stylebox.tres");
 
-@onready var color = $Color;
-@onready var state = $State;
+@export var card: Card: set = _set_card;
+
+@onready var panel = $Panel
+@onready var cost = $Cost
+@onready var icon = $Icon
 @onready var drop_point_detector = $DropPointDetector;
 @onready var card_state_machine = $CardStateMachine as CardStateMachine;
 @onready var targets: Array[Node] = [];
@@ -41,3 +46,11 @@ func _on_drop_point_detector_area_exited(area):
 func animate_to_position(new_position: Vector2, duration: float):
 	tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT);
 	tween.tween_property(self, "global_position", new_position, duration);
+
+func _set_card(value: Card):
+	if not is_node_ready():
+		await ready;
+	
+	card = value;
+	cost.text = str(value.cost);
+	icon.texture = value.icon;
