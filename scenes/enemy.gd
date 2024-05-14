@@ -45,3 +45,11 @@ func take_damage(damage: int):
 	
 	if stats.health <= 0:
 		queue_free();
+
+
+func _on_area_entered(area):
+	arrow.visible = true;
+
+
+func _on_area_exited(area):
+	arrow.visible = false; # Replace with function body.
