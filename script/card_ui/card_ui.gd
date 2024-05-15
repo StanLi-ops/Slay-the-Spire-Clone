@@ -16,12 +16,14 @@ const HOVER_STYLEBOX := preload("res://tres/card_hover_stylebox.tres");
 @onready var icon = $Icon
 @onready var drop_point_detector = $DropPointDetector;
 @onready var card_state_machine = $CardStateMachine as CardStateMachine;
-@onready var targets: Array[Node] = [];
+@onready var targets :Array[Node] = [];
+@onready var original_index := self.get_index();
 
 var parent : Control;
 var tween : Tween;
 var playable := true : set = _set_playable;
 var disable := false;
+
 # 加载 Card 状态机初始化
 func _ready():
 	Events.card_aim_started.connect(_on_card_drag_or_aiming_started);
