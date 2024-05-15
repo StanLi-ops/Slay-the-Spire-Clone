@@ -1,6 +1,5 @@
 extends CardState
 
-
 # 状态 进入时
 func enter():
 	# 确认 CardUI 加载完成
@@ -18,12 +17,24 @@ func enter():
 
 # 状态 GUI 输入时
 func on_gui_input(event: InputEvent):
+	# 如果 Card 禁用， 则跳过交互
+	if not card_ui.playable or card_ui.disable:
+		return;
+	
 	if event.is_action_pressed("left_mouse"):
 		card_ui.pivot_offset = card_ui.get_global_mouse_position() - card_ui.global_position;
 		transition_requested.emit(self, CardState.State.CLICKED);
 
 func on_muse_entered():
+	# 如果 Card 禁用， 则跳过交互
+	if not card_ui.playable or card_ui.disable:
+		return;
+	
 	card_ui.panel.set("theme_override_styles/panel", card_ui.HOVER_STYLEBOX);
 	
 func on_muse_exited():
+	# 如果 Card 禁用， 则跳过交互
+	if not card_ui.playable or card_ui.disable:
+		return;
+	
 	card_ui.panel.set("theme_override_styles/panel", card_ui.BASE_STYLEBOX);

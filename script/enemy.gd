@@ -3,19 +3,13 @@ extends Area2D;
 
 const ARROW_OFFSET := 5;
 
-@export var stats: Stats: set = set_enemy_stats;
+@export var stats: Stats: set = _set_enemy_stats;
 
 @onready var sprite_2d = $Sprite2D;
 @onready var arrow = $Arrow;
 @onready var stats_ui = $StatsUI;
 
-# test
-func _ready():
-	await get_tree().create_timer(2.0).timeout;
-	take_damage(5);
-	stats.block += 5;
-
-func set_enemy_stats(value: Stats):
+func _set_enemy_stats(value: Stats):
 	stats = value.create_instance();
 	
 	if not stats.stats_changed.is_connected(update_stats):
@@ -52,4 +46,4 @@ func _on_area_entered(_area):
 
 
 func _on_area_exited(_area):
-	arrow.visible = false; # Replace with function body.
+	arrow.visible = false;

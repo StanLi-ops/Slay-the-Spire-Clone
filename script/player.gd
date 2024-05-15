@@ -1,18 +1,12 @@
 class_name Player;
 extends Node2D;
 
-@export var stats: CharactorStats: set = set_characotor_stats;
+@export var stats: CharactorStats: set = _set_characotor_stats;
 
 @onready var sprite_2d = $Sprite2D;
 @onready var stats_ui = $StatsUI as StatsUI;
 
-# test
-func _ready():
-	await get_tree().create_timer(4.0).timeout;
-	take_damage(10);
-	stats.block += 10;
-
-func set_characotor_stats(value: CharactorStats):
+func _set_characotor_stats(value: CharactorStats):
 	stats = value.create_instance();
 	
 	if not stats.stats_changed.is_connected(update_stats):

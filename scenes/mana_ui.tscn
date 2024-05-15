@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6im40k30g0aa"]
+
+[ext_resource type="Theme" uid="uid://b7ep3akobiegr" path="res://tres/main_theme.tres" id="1_c1cn8"]
+[ext_resource type="Script" path="res://script/mana_ui.gd" id="2_dv2yy"]
+[ext_resource type="Resource" uid="uid://d32mqul05xtv2" path="res://characters/warrior/warrior.tres" id="3_p68nd"]
+
+[node name="ManaUI" type="Panel"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -27.0
+offset_right = 27.0
+offset_bottom = -9.0
+grow_vertical = 0
+theme = ExtResource("1_c1cn8")
+script = ExtResource("2_dv2yy")
+stats = ExtResource("3_p68nd")
+
+[node name="ManaLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3/3"
+horizontal_alignment = 1
+vertical_alignment = 1

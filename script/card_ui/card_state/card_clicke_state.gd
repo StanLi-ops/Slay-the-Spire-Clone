@@ -1,6 +1,5 @@
 extends CardState
 
-
 # 状态 进入时
 func enter():
 	# 修改 CardUI 参数

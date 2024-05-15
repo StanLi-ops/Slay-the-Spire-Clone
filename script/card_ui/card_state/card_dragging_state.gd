@@ -13,6 +13,9 @@ func enter():
 	# 修改 CardUI 参数 
 	card_ui.panel.set("theme_override_styles/panel", card_ui.DRAGGING_STYLEBOX);
 	
+	# 向事件总线 发送 Card 拖动开始 信号
+	Events.card_drag_started.emit(card_ui);
+	
 	# 添加一个定时器, 防止短时间内接受 InputEvent 过多.
 	minimum_drop_time_elapsed = false;
 	var thers_hold_time := get_tree().create_timer(DROP_MINIMUM_THRES_HOLD,false);
@@ -37,7 +40,12 @@ func on_input(event: InputEvent):
 	# 转化状态
 	if cancel:
 		transition_requested.emit(self, CardState.State.BASE);
+		
 	elif released and minimum_drop_time_elapsed:
 		get_viewport().set_input_as_handled();
 		transition_requested.emit(self, CardState.State.RELEASED);
-		
+
+func exit():
+	# 向事件总线 发送 Card 拖动结束 信号
+	Events.card_drag_ended.emit(card_ui);
+

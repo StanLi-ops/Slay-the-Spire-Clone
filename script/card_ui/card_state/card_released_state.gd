@@ -2,17 +2,14 @@ extends CardState
 
 var played: bool;
 
-
 # 状态 进入时
 func enter():
-	# 修改 CardUI 参数 
-	
-	
 	played = false;
 	
 	# 确认 CardUI 是否进入 CardDropArea
 	if not card_ui.targets.is_empty():
 		played = true;
+		card_ui.play();
 
 # 状态 输入时
 func on_input(_event: InputEvent):

@@ -6,17 +6,17 @@ signal stats_changed();
 @export var max_health := 1;
 @export var art: Texture;
 
-var health: int : set = set_health;
-var block: int : set = set_block;
+var health: int : set = _set_health;
+var block: int : set = _set_block;
 
-func set_health(value: int) -> int:
+func _set_health(value: int) -> int:
 	health = clampi(value, 0, max_health);
 	
 	stats_changed.emit();
 	
 	return health
 
-func set_block(value: int) -> int:
+func _set_block(value: int) -> int:
 	block = clampi(value, 0, 999);
 	
 	stats_changed.emit();
