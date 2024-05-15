@@ -9,7 +9,7 @@ const DRAGGING_STYLEBOX := preload("res://tres/card_dragging_stylebox.tres");
 const HOVER_STYLEBOX := preload("res://tres/card_hover_stylebox.tres");
 
 @export var card: Card: set = _set_card;
-@export var char_stats: CharactorStats: set = _set_char_stats;
+@export var char_stats: CharacterStats: set = _set_char_stats;
 
 @onready var panel = $Panel
 @onready var cost = $Cost
@@ -72,7 +72,7 @@ func play():
 	
 	queue_free();
 
-func _set_char_stats(value: CharactorStats):
+func _set_char_stats(value: CharacterStats):
 	char_stats = value;
 	char_stats.stats_changed.connect(_on_char_stats_changed);
 

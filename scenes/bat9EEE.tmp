@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bw7k4movbusjj"]
+[gd_scene load_steps=14 format=3 uid="uid://bw7k4movbusjj"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_5ww1n"]
 [ext_resource type="Script" path="res://script/battle.gd" id="1_xrwwl"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bintkfom65i60" path="res://scenes/player.tscn" id="8_sowg1"]
 [ext_resource type="PackedScene" uid="uid://b6im40k30g0aa" path="res://scenes/mana_ui.tscn" id="11_jq3g8"]
 [ext_resource type="PackedScene" uid="uid://bj51pnra4xn4f" path="res://scenes/tooltip.tscn" id="12_sfj03"]
-[ext_resource type="Theme" uid="uid://b7ep3akobiegr" path="res://tres/main_theme.tres" id="13_i0mmk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptbik"]
 size = Vector2(256, 100)
@@ -46,9 +45,8 @@ stats = ExtResource("5_tlo30")
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_gshah")]
 metadata/_edit_group_ = true
 
-[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
+[node name="PlayerHandler" type="Node" parent="."]
 script = ExtResource("8_d8n4x")
-hand = NodePath("../BetterUI/Hand")
 
 [node name="BetterUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("7_fbevw")
@@ -72,20 +70,3 @@ script = ExtResource("2_c3xnu")
 char_stats = ExtResource("3_1labv")
 
 [node name="Tooltip" parent="BetterUI" instance=ExtResource("12_sfj03")]
-
-[node name="EndTurnButton" type="Button" parent="BetterUI"]
-unique_name_in_owner = true
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -54.0
-offset_top = -23.0
-offset_right = -9.0
-offset_bottom = -9.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("13_i0mmk")
-disabled = true
-text = "End Turn"

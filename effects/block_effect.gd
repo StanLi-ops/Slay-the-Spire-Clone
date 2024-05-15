@@ -7,5 +7,9 @@ func execute(_targets: Array[Node]):
 	for target in _targets:
 		if not target:
 			continue;
-		if target is Enemy or target is Player:
+		
+		if target is Enemy:
 			target.stats.block += amount;
+		
+		if target is Player:
+			target.char_stats.block += amount;

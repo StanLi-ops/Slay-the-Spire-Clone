@@ -14,6 +14,9 @@ func enter():
 	card_ui.reparent_requested.emit(card_ui);
 	card_ui.panel.set("theme_override_styles/panel", card_ui.BASE_STYLEBOX);
 	card_ui.pivot_offset = Vector2.ZERO;
+	
+	# 向事件总线 发送 提示框隐藏 信号
+	Events.tooltip_hide_requested.emit();
 
 # 状态 GUI 输入时
 func on_gui_input(event: InputEvent):
@@ -32,9 +35,15 @@ func on_muse_entered():
 	
 	card_ui.panel.set("theme_override_styles/panel", card_ui.HOVER_STYLEBOX);
 	
+	# 向事件总线 发送 提示框显示 信号
+	Events.card_tooltip_requested.emit(card_ui.card.icon, card_ui.card.tooltip_text);
+	
 func on_muse_exited():
 	# 如果 Card 禁用， 则跳过交互
 	if not card_ui.playable or card_ui.disable:
 		return;
 	
 	card_ui.panel.set("theme_override_styles/panel", card_ui.BASE_STYLEBOX);
+	
+	# 向事件总线 发送 提示框隐藏 信号
+	Events.tooltip_hide_requested.emit();

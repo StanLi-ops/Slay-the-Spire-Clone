@@ -1,19 +1,20 @@
 class_name ManaUI;
 extends Panel;
 
-@export var stats: CharactorStats: set = _set_characotor_stats;
+@export var char_stats: CharacterStats: set = _set_char_stats;
 
 @onready var mana_label = $ManaLabel
 
-func _ready():
-	await get_tree().create_timer(2).timeout;
-	stats.mana = 3;
+#test
+#func _ready():
+	#await get_tree().create_timer(1).timeout;
+	#char_stats.mana = 3;
 
-func _set_characotor_stats(value: CharactorStats):
-	stats = value;
+func _set_char_stats(value: CharacterStats):
+	char_stats = value;
 	
-	if not stats.stats_changed.is_connected(_on_stats_changed):
-		stats.stats_changed.connect(_on_stats_changed);
+	if not char_stats.stats_changed.is_connected(_on_stats_changed):
+		char_stats.stats_changed.connect(_on_stats_changed);
 	
 	if not is_node_ready():
 		await ready;
@@ -21,4 +22,4 @@ func _set_characotor_stats(value: CharactorStats):
 	_on_stats_changed();
 
 func _on_stats_changed():
-	mana_label.text = "%s/%s" % [stats.mana, stats.max_mana];
+	mana_label.text = "%s/%s" % [char_stats.mana, char_stats.max_mana];

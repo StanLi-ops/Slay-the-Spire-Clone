@@ -1,4 +1,4 @@
-class_name CharactorStats;
+class_name CharacterStats;
 extends Stats;
 
 @export var strting_deck: CardPile;
@@ -8,7 +8,7 @@ extends Stats;
 var mana: int: set = _set_mana;
 var deck: CardPile;
 var discard: CardPile;
-var darw_pile: CardPile;
+var draw_pile: CardPile;
 
 func _set_mana(value: int):
 	mana = value;
@@ -27,5 +27,5 @@ func create_instance() -> Resource:
 	instance.reset_mana();
 	instance.deck = instance.strting_deck.duplicate();
 	instance.discard = CardPile.new();
-	instance.darw_pile = CardPile.new();
+	instance.draw_pile = CardPile.new();
 	return instance;

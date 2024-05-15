@@ -33,7 +33,7 @@ func _get_targets(targets: Array[Node]) -> Array[Node]:
 		_:
 			return [];
 
-func play(targets: Array[Node], char_stats: CharactorStats):
+func play(targets: Array[Node], char_stats: CharacterStats):
 	Events.card_played.emit(self);
 	
 	char_stats.mana -= cost;
