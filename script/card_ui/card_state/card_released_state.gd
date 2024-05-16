@@ -19,7 +19,7 @@ func enter():
 func on_input(_event: InputEvent):
 	# 如果 CardUI 不在 CardDropArea 中, 则状态转换为 BASE.
 	if played:
-		return;
+		return ;
 	else:
 		transition_requested.emit(self, CardState.State.BASE);
 		

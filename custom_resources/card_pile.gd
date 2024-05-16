@@ -3,7 +3,7 @@ extends Resource;
 
 signal card_pile_size_changed(cards_amount);
 
-@export var cards :Array[Card] = [];
+@export var cards: Array[Card] = [];
 
 func empty() -> bool:
 	return cards.is_empty();
@@ -28,7 +28,7 @@ func shuffle():
 	cards.shuffle();
 
 func _to_string() -> String:
-	var _cards_string : PackedStringArray = [];
+	var _cards_string: PackedStringArray = [];
 	for i in range(cards.size()):
-		_cards_string.append("%s: %s" % [i+1, cards[i].id]);
+		_cards_string.append("%s: %s" % [i + 1, cards[i].id]);
 	return "\n".join(_cards_string);

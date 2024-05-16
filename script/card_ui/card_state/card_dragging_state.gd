@@ -1,7 +1,7 @@
 extends CardState
 
-const  DROP_MINIMUM_THRES_HOLD := 0.05;
-var minimum_drop_time_elapsed : bool;
+const DROP_MINIMUM_THRES_HOLD := 0.05;
+var minimum_drop_time_elapsed: bool;
 
 # 状态 进入时
 func enter():
@@ -18,8 +18,8 @@ func enter():
 	
 	# 添加一个定时器, 防止短时间内接受 InputEvent 过多.
 	minimum_drop_time_elapsed = false;
-	var thers_hold_time := get_tree().create_timer(DROP_MINIMUM_THRES_HOLD,false);
-	thers_hold_time.timeout.connect(func(): minimum_drop_time_elapsed = true);
+	var thers_hold_time := get_tree().create_timer(DROP_MINIMUM_THRES_HOLD, false);
+	thers_hold_time.timeout.connect(func(): minimum_drop_time_elapsed=true);
 
 # 状态 输入时
 func on_input(event: InputEvent):
@@ -31,7 +31,7 @@ func on_input(event: InputEvent):
 	# 判断是否符合瞄准状态. 是, 则转换状态至 AIMING
 	if single_targeted and mouse_motion and card_ui.targets.size() > 0:
 		transition_requested.emit(self, CardState.State.AIMING);
-		return;
+		return ;
 	
 	# 更新 CardUI 位置
 	if mouse_motion:
@@ -48,4 +48,3 @@ func on_input(event: InputEvent):
 func exit():
 	# 向事件总线 发送 Card 拖动结束 信号
 	Events.card_drag_ended.emit(card_ui);
-

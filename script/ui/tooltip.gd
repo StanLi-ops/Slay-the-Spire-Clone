@@ -7,13 +7,13 @@ extends PanelContainer;
 @onready var tooltip_text_lable = %TooltipText;
 
 var tween: Tween;
-var tooltip_is_visible: = false;
+var tooltip_is_visible := false;
 
 func _ready():
 	Events.card_tooltip_requested.connect(show_tooltip);
 	Events.tooltip_hide_requested.connect(hide_tooltip);
 	
-	modulate = Color.TRANSPARENT;	
+	modulate = Color.TRANSPARENT;
 	hide();
 
 func show_tooltip(icon: Texture, text: String):

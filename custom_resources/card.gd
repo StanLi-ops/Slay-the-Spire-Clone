@@ -45,4 +45,4 @@ func play(targets: Array[Node], char_stats: CharacterStats):
 
 #虚函数
 func apply_effect(_targets: Array[Node]):
-	pass;
+	pass ;

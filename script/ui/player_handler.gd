@@ -41,7 +41,7 @@ func draw_cards(amount: int):
 		tween.tween_interval(HAND_DARW_INTERVAL);
 	
 	tween.finished.connect(
-		func (): Events.player_hand_darwn.emit();
+		func(): Events.player_hand_darwn.emit();
 	);
 	
 func discard_cards():
@@ -53,12 +53,12 @@ func discard_cards():
 		tween.tween_interval(HAND_DARW_INTERVAL);
 	
 	tween.finished.connect(
-		func (): Events.player_hand_discarded.emit();
-	); 
+		func(): Events.player_hand_discarded.emit();
+	);
 
 func reshuffle_deck_from_discard():
 	if not char_stats.draw_pile.empty():
-		return;
+		return ;
 	
 	while not char_stats.discard.empty():
 		char_stats.draw_pile.add_card(char_stats.discard.draw_card());

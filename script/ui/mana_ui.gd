@@ -3,12 +3,7 @@ extends Panel;
 
 @export var char_stats: CharacterStats: set = _set_char_stats;
 
-@onready var mana_label = $ManaLabel
-
-#test
-#func _ready():
-	#await get_tree().create_timer(1).timeout;
-	#char_stats.mana = 3;
+@onready var mana_label = $ManaLabel;
 
 func _set_char_stats(value: CharacterStats):
 	char_stats = value;

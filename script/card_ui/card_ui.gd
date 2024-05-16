@@ -4,9 +4,9 @@ extends Control;
 # 复原 请求信号
 signal reparent_requested(which_card_ui: CardUI);
 
-const BASE_STYLEBOX := preload("res://tres/card_base_stylebox.tres");
-const DRAGGING_STYLEBOX := preload("res://tres/card_dragging_stylebox.tres");
-const HOVER_STYLEBOX := preload("res://tres/card_hover_stylebox.tres");
+const BASE_STYLEBOX := preload ("res://tres/card_base_stylebox.tres");
+const DRAGGING_STYLEBOX := preload ("res://tres/card_dragging_stylebox.tres");
+const HOVER_STYLEBOX := preload ("res://tres/card_hover_stylebox.tres");
 
 @export var card: Card: set = _set_card;
 @export var char_stats: CharacterStats: set = _set_char_stats;
@@ -16,12 +16,12 @@ const HOVER_STYLEBOX := preload("res://tres/card_hover_stylebox.tres");
 @onready var icon = $Icon
 @onready var drop_point_detector = $DropPointDetector;
 @onready var card_state_machine = $CardStateMachine as CardStateMachine;
-@onready var targets :Array[Node] = [];
+@onready var targets: Array[Node] = [];
 @onready var original_index := self.get_index();
 
-var parent : Control;
-var tween : Tween;
-var playable := true : set = _set_playable;
+var parent: Control;
+var tween: Tween;
+var playable := true: set = _set_playable;
 var disable := false;
 
 # 加载 Card 状态机初始化
@@ -66,7 +66,7 @@ func _set_card(value: Card):
 
 func play():
 	if not card:
-		return;
+		return ;
 	
 	card.play(targets, char_stats);
 	
@@ -87,7 +87,7 @@ func _set_playable(value: bool):
 
 func _on_card_drag_or_aiming_started(user_card_ui: CardUI):
 	if user_card_ui == self:
-		return;
+		return ;
 	
 	disable = true;
 

@@ -4,11 +4,11 @@ extends EnemyAction
 
 func perform_action():
 	if not enemy or not target:
-		return;
+		return ;
 	
 	var tween = create_tween().set_trans(Tween.TRANS_QUINT);
-	var start_position := enemy.global_position; 
-	var end_position := target.global_position + Vector2.RIGHT * 32; 
+	var start_position := enemy.global_position;
+	var end_position := target.global_position + Vector2.RIGHT * 32;
 	var damage_effect := DamageEffect.new();
 	var target_array: Array[Node] = [target];
 	
@@ -20,5 +20,5 @@ func perform_action():
 	tween.tween_property(enemy, "global_position", start_position, 0.4);
 	
 	tween.finished.connect(
-		func (): Events.enemy_action_completed.emit(enemy);
-	); 
+		func(): Events.enemy_action_completed.emit(enemy);
+	);

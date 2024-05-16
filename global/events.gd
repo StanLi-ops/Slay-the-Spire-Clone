@@ -19,5 +19,3 @@ signal player_died();
 
 signal enemy_action_completed(enemy: Enemy);
 signal enemy_turn_ended();
-
-

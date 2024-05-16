@@ -21,7 +21,7 @@ func cna_play_check(card: Card) -> bool:
 	return mana >= card.cost;
 
 func create_instance() -> Resource:
-	var instance :Stats = self.duplicate();
+	var instance: Stats = self.duplicate();
 	instance.health = max_health;
 	instance.block = 0;
 	instance.reset_mana();

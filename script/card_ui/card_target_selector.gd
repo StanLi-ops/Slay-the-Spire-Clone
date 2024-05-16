@@ -5,7 +5,7 @@ const ARC_POINTS := 9;
 @onready var area_2d = $Area2D;
 @onready var card_arc = $CanvasLayer/CardArc;
 
-var current_card_ui : CardUI;
+var current_card_ui: CardUI;
 var targeting := false;
 
 func _ready():
@@ -15,7 +15,7 @@ func _ready():
 func _process(_delta):
 	# 如果不在 Selector 状态, 则直接退出
 	if not targeting:
-		return;
+		return ;
 	
 	# 更新 Area2D 位置
 	# 绘制 Line2D 所需节点
@@ -74,4 +74,3 @@ func _on_area_2d_area_exited(area: Area2D):
 		return
 	
 	current_card_ui.targets.erase(area);
-

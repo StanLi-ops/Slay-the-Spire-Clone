@@ -16,13 +16,13 @@ func is_performable() -> bool:
 
 func perform_action():
 	if not enemy or not target:
-		return;
+		return ;
 	
-	var block_effect := BlockEffect.new();	
+	var block_effect := BlockEffect.new();
 	block_effect.amount = block;
 	
 	block_effect.execute([enemy]);
 	
 	get_tree().create_timer(0.6, false).timeout.connect(
-		func (): Events.enemy_action_completed.emit(enemy);
+		func(): Events.enemy_action_completed.emit(enemy);
 	);

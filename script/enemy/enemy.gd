@@ -9,7 +9,7 @@ const ARROW_OFFSET := 5;
 @onready var arrow = $Arrow;
 @onready var stats_ui = $StatsUI;
 
-var enemy_action_picker : EnemyActionPicker;
+var enemy_action_picker: EnemyActionPicker;
 var current_action: EnemyAction: set = _set_current_action;
 
 func _set_current_action(value: EnemyAction):
@@ -38,11 +38,11 @@ func update_stats():
 
 func update_action():
 	if not enemy_action_picker:
-		return;
+		return ;
 	
 	if not current_action:
 		current_action = enemy_action_picker.get_action();
-		return;
+		return ;
 	
 	var new_conditional_action := enemy_action_picker.get_first_conditional_action();
 	if new_conditional_action and current_action != new_conditional_action:
@@ -50,7 +50,7 @@ func update_action():
 
 func update_enemy():
 	if not enemy_stats is EnemyStats:
-		return;
+		return ;
 	
 	if not is_inside_tree():
 		await ready;
@@ -65,13 +65,13 @@ func do_turn():
 	enemy_stats.block = 0;
 	
 	if not current_action:
-		return;
+		return ;
 	
 	current_action.perform_action();
 
 func take_damage(damage: int):
 	if enemy_stats.health <= 0:
-		return;
+		return ;
 	
 	enemy_stats.take_damage(damage);
 	

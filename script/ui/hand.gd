@@ -2,7 +2,7 @@ class_name Hand;
 extends HBoxContainer;
 
 @export var char_stats: CharacterStats;
-@onready var card_ui = preload("res://scenes/card_ui.tscn");
+@onready var card_ui = preload ("res://scenes/card_ui.tscn");
 
 var cards_played_this_turn := 0;
 
@@ -38,4 +38,3 @@ func _on_card_ui_reparent_requested(child: CardUI):
 
 func _on_card_played(_card: Card):
 	cards_played_this_turn += 1;
-

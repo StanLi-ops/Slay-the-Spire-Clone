@@ -13,20 +13,19 @@ signal transition_requested(from: CardState, to: State);
 var card_ui: CardUI;
 
 func enter():
-	pass;
+	pass ;
 
 func exit():
-	pass;
+	pass ;
 
 func on_input(_event: InputEvent):
-	pass;
+	pass ;
 
 func on_gui_input(_event: InputEvent):
-	pass;
+	pass ;
 
 func on_muse_entered():
-	pass;
+	pass ;
 
 func on_muse_exited():
-	pass;
-
+	pass ;

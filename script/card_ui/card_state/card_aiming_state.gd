@@ -36,4 +36,3 @@ func on_input(event: InputEvent):
 	elif event.is_action_released("left_mouse") or event.is_action_pressed("left_mouse"):
 		get_viewport().set_input_as_handled();
 		transition_requested.emit(self, CardState.State.RELEASED);
-		

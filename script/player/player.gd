@@ -16,7 +16,7 @@ func _set_char_stats(value: CharacterStats):
 
 func update_player():
 	if not char_stats is CharacterStats:
-		return;
+		return ;
 	
 	if not is_inside_tree():
 		await ready;
@@ -29,7 +29,7 @@ func update_stats():
 
 func take_damage(damage: int):
 	if char_stats.health <= 0:
-		return;
+		return ;
 	
 	char_stats.take_damage(damage);
 	

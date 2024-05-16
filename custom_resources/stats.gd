@@ -6,8 +6,8 @@ signal stats_changed();
 @export var max_health := 1;
 @export var art: Texture;
 
-var health: int : set = _set_health;
-var block: int : set = _set_block;
+var health: int: set = _set_health;
+var block: int: set = _set_block;
 
 func _set_health(value: int) -> int:
 	health = clampi(value, 0, max_health);
@@ -25,10 +25,10 @@ func _set_block(value: int) -> int:
 
 func take_damage(damage: int):
 	if damage < 0:
-		return;
+		return ;
 	
 	var initalt_damage := damage;
-	damage = clampi(damage - block, 0 ,damage);
+	damage = clampi(damage - block, 0, damage);
 	self.block = clampi(block - initalt_damage, 0, block);
 	self.health -= damage;
 
@@ -36,7 +36,7 @@ func heal(amount: int):
 	self.health += amount;
 
 func create_instance() -> Resource:
-	var instance :Stats = self.duplicate();
+	var instance: Stats = self.duplicate();
 	instance.health = max_health;
 	instance.block = 0;
 	return instance;
