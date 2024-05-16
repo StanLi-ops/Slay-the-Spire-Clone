@@ -34,4 +34,5 @@ func take_damage(damage: int):
 	char_stats.take_damage(damage);
 	
 	if char_stats.health <= 0:
+		Events.player_died.emit();
 		queue_free();

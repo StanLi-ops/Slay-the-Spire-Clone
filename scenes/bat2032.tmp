@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://d32mqul05xtv2" path="res://characters/warrior/warrior.tres" id="3_1labv"]
 [ext_resource type="PackedScene" uid="uid://fytkemdaes5d" path="res://scenes/card_target_selector.tscn" id="3_gshah"]
 [ext_resource type="PackedScene" uid="uid://bfcxe7uh3rl8w" path="res://scenes/enemy.tscn" id="4_eqh0i"]
-[ext_resource type="Script" path="res://script/ui/enemy_handler.gd" id="5_nckn2"]
+[ext_resource type="Script" path="res://scenes/enemy_handler.gd" id="5_nckn2"]
 [ext_resource type="Resource" uid="uid://bifsrhp1gvlbf" path="res://emenies/carb/carb_enemy.tres" id="6_1bkfq"]
 [ext_resource type="Script" path="res://script/ui/better_ui.gd" id="7_fbevw"]
 [ext_resource type="Script" path="res://script/ui/player_handler.gd" id="8_d8n4x"]
@@ -93,5 +93,3 @@ grow_vertical = 0
 theme = ExtResource("13_i0mmk")
 disabled = true
 text = "End Turn"
-
-[connection signal="child_order_changed" from="EnemyHandler" to="." method="_on_enemy_handler_child_order_changed"]

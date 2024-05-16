@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce4k73t5diwmt"]
+
+[ext_resource type="Script" path="res://script/enemy/enemy_action_picker.gd" id="1_ri1yu"]
+[ext_resource type="Script" path="res://emenies/carb/carb_acttack_action.gd" id="2_2w0ri"]
+[ext_resource type="Script" path="res://emenies/carb/carb_block_action.gd" id="3_ivwtt"]
+[ext_resource type="Script" path="res://emenies/carb/carb_mega_block_action.gd" id="4_328sy"]
+
+[node name="CarbEnemyAI" type="Node"]
+script = ExtResource("1_ri1yu")
+
+[node name="ActtackAction" type="Node" parent="."]
+script = ExtResource("2_2w0ri")
+type = 1
+chance_weight = 1.0
+
+[node name="BlockAction" type="Node" parent="."]
+script = ExtResource("3_ivwtt")
+type = 1
+chance_weight = 1.0
+
+[node name="MegaBlockAction" type="Node" parent="."]
+script = ExtResource("4_328sy")
