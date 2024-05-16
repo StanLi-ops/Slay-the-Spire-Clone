@@ -3,7 +3,7 @@ extends Area2D;
 
 const ARROW_OFFSET := 5;
 
-@export var stats: EnemyStats: set = _set_enemy_stats;
+@export var enemy_stats: EnemyStats: set = _set_enemy_stats;
 
 @onready var sprite_2d = $Sprite2D;
 @onready var arrow = $Arrow;
@@ -16,11 +16,11 @@ func _set_current_action(value: EnemyAction):
 	current_action = value;
 
 func _set_enemy_stats(value: EnemyStats):
-	stats = value.create_instance();
+	enemy_stats = value.create_instance();
 	
-	if not stats.stats_changed.is_connected(update_stats):
-		stats.stats_changed.connect(update_stats);
-		stats.stats_changed.connect(update_action);
+	if not enemy_stats.stats_changed.is_connected(update_stats):
+		enemy_stats.stats_changed.connect(update_stats);
+		enemy_stats.stats_changed.connect(update_action);
 	
 	update_enemy();
 
@@ -28,13 +28,13 @@ func setup_ai():
 	if enemy_action_picker:
 		enemy_action_picker.queue_free();
 	
-	var new_action_picker: EnemyActionPicker = stats.ai.instantiate();
+	var new_action_picker: EnemyActionPicker = enemy_stats.ai.instantiate();
 	add_child(new_action_picker);
 	enemy_action_picker = new_action_picker;
 	enemy_action_picker.enemy = self;
 
 func update_stats():
-	stats_ui.update_stats(stats);
+	stats_ui.update_stats(enemy_stats);
 
 func update_action():
 	if not enemy_action_picker:
@@ -49,20 +49,20 @@ func update_action():
 		current_action = new_conditional_action;
 
 func update_enemy():
-	if not stats is Stats:
+	if not enemy_stats is EnemyStats:
 		return;
 	
 	if not is_inside_tree():
 		await ready;
 	
-	sprite_2d.texture = stats.art;
+	sprite_2d.texture = enemy_stats.art;
 	arrow.position = Vector2.RIGHT * (sprite_2d.get_rect().size.x / 2 + ARROW_OFFSET);
 	
 	setup_ai();
 	update_stats();
 
 func do_turn():
-	stats.block = 0;
+	enemy_stats.block = 0;
 	
 	if not current_action:
 		return;
@@ -70,12 +70,12 @@ func do_turn():
 	current_action.perform_action();
 
 func take_damage(damage: int):
-	if stats.health <= 0:
+	if enemy_stats.health <= 0:
 		return;
 	
-	stats.take_damage(damage);
+	enemy_stats.take_damage(damage);
 	
-	if stats.health <= 0:
+	if enemy_stats.health <= 0:
 		queue_free();
 
 func _on_area_entered(_area):
