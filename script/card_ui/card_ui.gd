@@ -17,8 +17,8 @@ const HOVER_STYLEBOX := preload ("res://tres/card_hover_stylebox.tres");
 @onready var drop_point_detector = $DropPointDetector;
 @onready var card_state_machine = $CardStateMachine as CardStateMachine;
 @onready var targets: Array[Node] = [];
-@onready var original_index := self.get_index();
 
+var original_index := 0;
 var parent: Control;
 var tween: Tween;
 var playable := true: set = _set_playable;

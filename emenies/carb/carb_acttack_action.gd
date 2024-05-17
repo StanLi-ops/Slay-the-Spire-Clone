@@ -13,6 +13,7 @@ func perform_action():
 	var target_array: Array[Node] = [target];
 	
 	damage_effect.amount = damage;
+	damage_effect.sound = sound;
 	
 	tween.tween_property(enemy, "global_position", end_position, 0.4);
 	tween.tween_callback(damage_effect.execute.bind(target_array));

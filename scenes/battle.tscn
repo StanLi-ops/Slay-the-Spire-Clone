@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bw7k4movbusjj"]
+[gd_scene load_steps=19 format=3 uid="uid://bw7k4movbusjj"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_5ww1n"]
 [ext_resource type="Script" path="res://script/ui/battle.gd" id="1_xrwwl"]
 [ext_resource type="Script" path="res://script/ui/hand.gd" id="2_c3xnu"]
 [ext_resource type="Resource" uid="uid://d32mqul05xtv2" path="res://characters/warrior/warrior.tres" id="3_1labv"]
 [ext_resource type="PackedScene" uid="uid://fytkemdaes5d" path="res://scenes/card_target_selector.tscn" id="3_gshah"]
+[ext_resource type="AudioStream" uid="uid://dpdenqqbovwfq" path="res://art/8_bit_iced_village_lofi.mp3" id="3_oiagd"]
 [ext_resource type="PackedScene" uid="uid://bfcxe7uh3rl8w" path="res://scenes/enemy.tscn" id="4_eqh0i"]
 [ext_resource type="Script" path="res://script/ui/enemy_handler.gd" id="5_nckn2"]
 [ext_resource type="Resource" uid="uid://bifsrhp1gvlbf" path="res://emenies/carb/carb_enemy.tres" id="6_1bkfq"]
@@ -14,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://b6im40k30g0aa" path="res://scenes/mana_ui.tscn" id="11_jq3g8"]
 [ext_resource type="PackedScene" uid="uid://bj51pnra4xn4f" path="res://scenes/tooltip.tscn" id="12_sfj03"]
 [ext_resource type="Theme" uid="uid://b7ep3akobiegr" path="res://tres/main_theme.tres" id="13_i0mmk"]
+[ext_resource type="Script" path="res://script/ui/red_flash.gd" id="15_t0hp1"]
+[ext_resource type="PackedScene" uid="uid://dvcgqgsus78g0" path="res://scenes/battle_over_panel.tscn" id="17_3ybbh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptbik"]
 size = Vector2(256, 100)
@@ -21,6 +24,7 @@ size = Vector2(256, 100)
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_xrwwl")
 char_stats = ExtResource("3_1labv")
+music = ExtResource("3_oiagd")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.558287, 0.558287, 0.558287, 1)
@@ -94,4 +98,26 @@ theme = ExtResource("13_i0mmk")
 disabled = true
 text = "End Turn"
 
+[node name="RedFlash" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("15_t0hp1")
+
+[node name="ColorRect" type="ColorRect" parent="RedFlash"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.980392, 0.00784314, 0, 0)
+
+[node name="Timer" type="Timer" parent="RedFlash"]
+wait_time = 0.15
+
+[node name="BattleOverLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="BattleOverPanel" parent="BattleOverLayer" instance=ExtResource("17_3ybbh")]
+
 [connection signal="child_order_changed" from="EnemyHandler" to="." method="_on_enemy_handler_child_order_changed"]
+[connection signal="timeout" from="RedFlash/Timer" to="RedFlash" method="_on_timer_timeout"]

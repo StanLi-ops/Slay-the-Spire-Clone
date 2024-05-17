@@ -10,3 +10,4 @@ func execute(_targets: Array[Node]):
 		
 		if target is Enemy or target is Player:
 			target.take_damage(amount);
+			SfxPlayer.play(sound);

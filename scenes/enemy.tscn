@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfcxe7uh3rl8w"]
+[gd_scene load_steps=7 format=3 uid="uid://bfcxe7uh3rl8w"]
 
 [ext_resource type="Texture2D" uid="uid://1u3b3hwqd8yh" path="res://art/tile_0110.png" id="1_ojfii"]
 [ext_resource type="Script" path="res://script/enemy/enemy.gd" id="1_ppi66"]
 [ext_resource type="Texture2D" uid="uid://bb3rcs5nqntir" path="res://art/arrow.png" id="2_brd52"]
 [ext_resource type="PackedScene" uid="uid://bl4yld0463ok4" path="res://scenes/stats_ui.tscn" id="2_qgs17"]
+[ext_resource type="PackedScene" uid="uid://ccesxi6w1er6m" path="res://scenes/intent_ui.tscn" id="5_nme2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsh62"]
 
@@ -26,6 +27,10 @@ shape = SubResource("RectangleShape2D_hsh62")
 [node name="StatsUI" parent="." instance=ExtResource("2_qgs17")]
 offset_top = 6.0
 offset_bottom = 22.0
+
+[node name="IntentUI" parent="." instance=ExtResource("5_nme2s")]
+offset_top = -24.0
+offset_bottom = -10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

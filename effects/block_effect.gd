@@ -10,6 +10,8 @@ func execute(_targets: Array[Node]):
 		
 		if target is Enemy:
 			target.enemy_stats.block += amount;
+			SfxPlayer.play(sound);
 		
 		if target is Player:
 			target.char_stats.block += amount;
+			SfxPlayer.play(sound);

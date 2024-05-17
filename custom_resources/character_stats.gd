@@ -16,6 +16,13 @@ func _set_mana(value: int):
 
 func reset_mana():
 	self.mana = max_mana;
+
+func take_damage(damage: int):
+	var initial_health := health;
+	super.take_damage(damage);
+	
+	if health < initial_health:
+		Events.player_hit.emit();
 	
 func cna_play_check(card: Card) -> bool:
 	return mana >= card.cost;

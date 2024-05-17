@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ckc4tu0vtg3ux"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://ckc4tu0vtg3ux"]
 
 [ext_resource type="Texture2D" uid="uid://oe7v35ii8vrs" path="res://art/tile_0102.png" id="1_3wwum"]
 [ext_resource type="Script" path="res://characters/warrior/cards/warrior_block.gd" id="2_128rr"]
+[ext_resource type="AudioStream" uid="uid://df64e7qat73gs" path="res://art/block.ogg" id="3_n16eq"]
 
 [resource]
 script = ExtResource("2_128rr")
@@ -11,3 +12,4 @@ target = 0
 cost = 1
 icon = ExtResource("1_3wwum")
 tooltip_text = "[center]Gain [color=0044ff]6[/color] block.[/center]"
+sound = ExtResource("3_n16eq")

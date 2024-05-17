@@ -29,6 +29,7 @@ func take_damage(damage: int):
 	
 	var initalt_damage := damage;
 	damage = clampi(damage - block, 0, damage);
+	
 	self.block = clampi(block - initalt_damage, 0, block);
 	self.health -= damage;
 

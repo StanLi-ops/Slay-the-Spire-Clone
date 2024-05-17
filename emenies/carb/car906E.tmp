@@ -44,5 +44,9 @@ sound = ExtResource("8_buj4y")
 
 [node name="MegaBlockAction" type="Node" parent="."]
 script = ExtResource("4_328sy")
+block = null
+hp_thershold = null
 intent = SubResource("Resource_r7ywn")
+type = null
+chance_weight = null
 sound = ExtResource("8_buj4y")
