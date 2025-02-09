@@ -60,7 +60,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="DropPointDetector" type="Area2D" parent="."]
-visible = false
 collision_mask = 2
 monitorable = false
 

@@ -35,4 +35,6 @@ func create_instance() -> Resource:
 	instance.deck = instance.strting_deck.duplicate();
 	instance.discard = CardPile.new();
 	instance.draw_pile = CardPile.new();
+	
+	print(max_health)
 	return instance;
